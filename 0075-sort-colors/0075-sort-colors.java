@@ -1,24 +1,15 @@
 class Solution {
     public void sortColors(int[] nums) {
-        int left = 0, mid = 0, right = nums.length - 1;
-
-        while (mid <= right) {
-            if (nums[mid] == 0) { 
-                swap(nums, left, mid);
-                left++;
-                mid++;
-            } else if (nums[mid] == 1) { 
-                mid++;
-            } else { 
-                swap(nums, mid, right);
-                right--;
+        for(int i=0;i<nums.length;i++)
+        {
+            for(int j=0;j<nums.length-1-i;j++){
+                if(nums[j]>nums[j+1]){
+                    int temp = nums[j+1];
+                    nums[j+1]= nums[j];
+                    nums[j] = temp;
+                }
             }
         }
-    }
-
-    private void swap(int[] nums, int i, int j) {
-        int temp = nums[i];
-        nums[i] = nums[j];
-        nums[j] = temp;
+        System.out.print(Arrays.toString(nums));
     }
 }
